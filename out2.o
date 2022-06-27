@@ -1,0 +1,32 @@
+POMOCNA TABELA 
+myCode	28
+myData	2
+
+TABELA SIMBOLA
+RB	Naziv			Sekcija 			offset		GLOBAL/LOCAL
+0	myCode				myCode				0			local
+1	tim_cfg				.ABS				65296			local
+2	myStart				myCode				0			global
+3	wait				myCode				10			local
+4	myData				myData				0			local
+5	myCounter			myData				0			global
+
+
+TABELA SEKCIJA
+#myCode
+A0 0F 00 01 00
+B0 0F 04 10 FF
+A0 0F 04 00 00
+A0 1F 00 05 00
+74 01
+52 FF 00 0A 00
+00
+
+#myData
+00 00
+
+
+TABELA RELOKACIJA
+#Sekcija		#OFFSET		#TIP REL.			#RB		#SIMBOL
+myCode			 13			R_X86_64_16			 5		myCounter
+myCode			 25			R_X86_64_16			 0		wait

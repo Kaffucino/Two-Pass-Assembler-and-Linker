@@ -1,0 +1,54 @@
+POMOCNA TABELA 
+ivt	16
+isr	62
+
+TABELA SIMBOLA
+RB	Naziv			Sekcija 			offset		GLOBAL/LOCAL
+0	ivt					ivt					0			local
+1	myStart				?					?			global
+2	myCounter			?					?			global
+3	isr					isr					0			local
+4	term_out			.ABS				65280			local
+5	term_in				.ABS				65282			local
+6	asciiCode			.ABS				84			local
+7	isr_reset			isr					0			local
+8	isr_timer			isr					5			local
+9	isr_terminal		isr					22			local
+
+
+TABELA SEKCIJA
+#ivt
+00 00
+00 00
+05 00
+16 00
+00 00 00 00 00 00 00 00
+
+#isr
+50 FF 00 00 00
+B0 06 12
+A0 0F 00 54 00
+B0 0F 04 00 FF
+A0 06 42
+20
+B0 06 12
+B0 16 12
+A0 0F 04 02 FF
+B0 0F 04 00 FF
+A0 07 03 FE FF
+A0 1F 00 01 00
+70 01
+B0 0F 04 00 00
+A0 16 42
+A0 06 42
+20
+
+
+TABELA RELOKACIJA
+#Sekcija		#OFFSET		#TIP REL.			#RB		#SIMBOL
+ivt			 0			R_X86_64_16			 3		isr_reset
+ivt			 4			R_X86_64_16			 3		isr_timer
+ivt			 6			R_X86_64_16			 3		isr_terminal
+isr			 3			R_X86_64_16			 1		myStart
+isr			 41			R_X86_64_16PC		 2		myCounter
+isr			 53			R_X86_64_16			 2		myCounter
